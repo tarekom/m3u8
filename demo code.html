@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script id='hlscript' src='src/hls.min.js'></script>
+</head>
+<body>
+<video id="HLSPlayer" controls></video>
+<script>var VURL = "https://livestreaming5.onlinehorizons.net/hls-live/Qurankareem/_definst_/liveevent/livestream.m3u8"</script>
+<script>
+if(Hls.isSupported()) {
+    var HLSVideo = document.querySelector("#HLSPlayer");
+    HLSVideo.volume = 1;
+    var hls = new Hls();
+    var m3u8Url = decodeURIComponent(VURL)
+    hls.loadSource(m3u8Url);
+    hls.attachMedia(HLSVideo);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      HLSVideo.play();
+    });
+  }
+</script>
+</body>
+</html>
